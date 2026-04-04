@@ -64,7 +64,7 @@ export function Hero() {
         <div className="hero-typing-wrapper">
           <span id="typed-text">{text}</span><span className="cursor"></span>
         </div>
-        <div className="hero-status">Available for Remote Roles &bull; United States</div>
+        <div className="hero-status">Open to Collaboration &bull; United States</div>
         <p className="hero-tagline">Building the future through code and exploring big ideas</p>
         <div className="hero-pills">
           <span className="pill">Coding</span>
