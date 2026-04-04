@@ -62,9 +62,9 @@ function updateMetaTag(attrName: 'name' | 'property', attrValue: string, content
 
 // Default meta tags for main page
 export const DEFAULT_META_TAGS: MetaTagsConfig = {
-  title: 'Bennett Schwartz | GustyCube - Full Stack Developer & Systems Architect',
-  description: 'Bennett Schwartz, also known as GustyCube, is a full-stack developer and founder building infrastructure-level software, scalable systems, and AI tooling. CEO of Ignyte Solutions.',
-  keywords: 'Bennett Schwartz, GustyCube, Bennett Schwartz developer, GustyCube developer, Full Stack Developer, Ignyte Solutions',
+  title: 'Bennett Schwartz - Software Developer, Researcher & Entrepreneur',
+  description: 'Bennett Schwartz (GustyCube) is an American software developer, researcher, and entrepreneur. CEO of Ignyte Solutions, specializing in AI, distributed systems, and infrastructure software.',
+  keywords: 'Bennett Schwartz, GustyCube, Bennett Schwartz developer, Bennett H. Schwartz, Ignyte Solutions CEO, software researcher, AI developer, distributed systems, infrastructure software',
   ogUrl: 'https://gustycube.com/',
 };
 
