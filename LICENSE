@@ -1,4 +1,25 @@
-                    GNU GENERAL PUBLIC LICENSE
+Copyright (C) 2026 Bennett Schwartz
+
+The source code in this repository is licensed under the GNU General Public
+License v3.0 (see below).
+
+The following assets are NOT licensed under the GPL and remain the exclusive
+property of Bennett Schwartz. All rights reserved:
+
+  - All personal branding, including the name "GustyCube," logos, and
+    brand marks
+  - Profile pictures, avatars, and photographic/illustrated likenesses
+  - The file bennett-schwartz.jpg and any other image depicting or
+    representing Bennett Schwartz
+  - Open Graph images (og-image.jpg) and favicon assets
+  - Any content or copy referencing Bennett Schwartz's personal identity,
+    biography, or affiliations
+
+You may use the code and design patterns under the GPL, but you must remove
+or replace all excluded assets listed above before distribution.
+------------------------------------------------------------------------------------------------------
+
+                      GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
 
  Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
