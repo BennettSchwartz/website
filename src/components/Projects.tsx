@@ -42,7 +42,7 @@ export function Projects() {
                   <span className="tag">DevOps</span>
                   <span className="tag">CLI</span>
                 </div>
-                <a href="https://github.com/GustyCube/EnsuraScript" target="_blank" className="project-link">
+                <a href="https://github.com/BennettSchwartz/EnsuraScript" target="_blank" className="project-link">
                   View Source &rarr;
                 </a>
               </div>
@@ -62,7 +62,7 @@ export function Projects() {
                   <span className="tag">AI</span>
                   <span className="tag">Benchmark</span>
                 </div>
-                <a href="https://github.com/GustyCube/ERR-EVAL" target="_blank" className="project-link">
+                <a href="https://github.com/BennettSchwartz/ERR-EVAL" target="_blank" className="project-link">
                   View Source &rarr;
                 </a>
               </div>

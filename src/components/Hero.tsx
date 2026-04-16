@@ -80,12 +80,12 @@ export function Hero() {
         <div className="hero-buttons">
           <a href="mailto:gc@gustycube.xyz" className="btn btn-primary">Let's Collaborate</a>
           <a href="https://gustycubeventures.com" target="_blank" className="btn btn-blue">My Ventures</a>
-          <a href="https://github.com/gustycube" target="_blank" className="btn btn-secondary">View My Work</a>
+          <a href="https://github.com/BennettSchwartz" target="_blank" className="btn btn-secondary">View My Work</a>
           <a href="https://gustycube.substack.com" target="_blank" className="btn btn-dark">My Writing</a>
         </div>
         <div className="hero-socials">
           <a href="https://gustycube.com">Web &rarr; gustycube.com</a>
-          <a href="https://github.com/gustycube">Code &rarr; github.com/gustycube</a>
+          <a href="https://github.com/BennettSchwartz">Code &rarr; github.com/BennettSchwartz</a>
           <a href="https://x.com/BennettSchwartz">X (Twitter) &rarr; x.com/BennettSchwartz</a>
           <a href="mailto:gc@gustycube.xyz">Mail &rarr; gc@gustycube.xyz</a>
         </div>

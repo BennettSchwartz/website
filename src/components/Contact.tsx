@@ -10,7 +10,7 @@ export function Contact() {
           </div>
           <div className="card contact-item fade-in">
             <h3>GitHub</h3>
-            <a href="https://github.com/gustycube" target="_blank">@gustycube</a>
+            <a href="https://github.com/BennettSchwartz" target="_blank">@BennettSchwartz</a>
           </div>
           <div className="card contact-item fade-in">
             <h3>LinkedIn</h3>
