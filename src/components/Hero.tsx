@@ -86,7 +86,7 @@ export function Hero() {
         <div className="hero-socials">
           <a href="https://gustycube.com">Web &rarr; gustycube.com</a>
           <a href="https://github.com/gustycube">Code &rarr; github.com/gustycube</a>
-          <a href="https://youtube.com/@gustycube">Video &rarr; youtube.com/@gustycube</a>
+          <a href="https://x.com/BennettSchwartz">X (Twitter) &rarr; x.com/BennettSchwartz</a>
           <a href="mailto:gc@gustycube.xyz">Mail &rarr; gc@gustycube.xyz</a>
         </div>
       </div>
