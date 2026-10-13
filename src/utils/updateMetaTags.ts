@@ -1,3 +1,6 @@
+import { detailPages } from '../content/pages';
+import { siteDescription, siteTitle, siteUrl } from '../content/site';
+
 /**
  * Utility function to dynamically update meta tags for SPA routing
  * This ensures proper SEO when navigating between different sections
@@ -62,9 +65,22 @@ function updateMetaTag(attrName: 'name' | 'property', attrValue: string, content
 
 // Default meta tags for main page
 export const DEFAULT_META_TAGS: MetaTagsConfig = {
-  title: 'Bennett Schwartz - Software Developer, Researcher & Entrepreneur',
-  twitterTitle: 'Bennett Schwartz (@BennettSchwartz) - Developer & Entrepreneur',
-  description: 'Bennett Schwartz (GustyCube) designs AR glasses at Gain Laboratories, builds memory for AI agents, and founded Veridity, a nonprofit for AI-assisted fact-checking of political livestreams.',
-  keywords: 'Bennett Schwartz, GustyCube, Bennett Schwartz developer, Bennett H. Schwartz, Gain Laboratories, AR glasses, spatial computing, Veridity, nonprofit founder, political fact-checking, live fact-checking, software researcher, AI developer, distributed systems, infrastructure software',
+  title: siteTitle,
+  twitterTitle: siteTitle,
+  description: siteDescription,
+  keywords: 'Bennett Schwartz, GustyCube, Bennett Schwartz developer, Bennett H. Schwartz, Gusty Laboratories, powered exoskeletons, personal flight systems, human mobility, Membrane, Veridity, ontology platform, public information research, software researcher, AI developer, distributed systems, infrastructure software',
   ogUrl: 'https://gustycube.com/',
 };
+
+export function getMetaTags(path: string): MetaTagsConfig {
+  if (path === '/') return DEFAULT_META_TAGS;
+  const page = detailPages.find((item) => item.path === path);
+  const title = `${page?.title ?? 'Page not found'} - Bennett Schwartz`;
+  return {
+    ...DEFAULT_META_TAGS,
+    title,
+    twitterTitle: title,
+    description: page?.description ?? 'This page could not be found.',
+    ogUrl: `${siteUrl}${path}`,
+  };
+}

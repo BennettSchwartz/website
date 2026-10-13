@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useRef } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import type { CSSProperties, ReactNode } from 'react';
 
 interface TextRevealProps {
@@ -12,11 +12,18 @@ interface TextRevealProps {
  * slide up from behind a clipping line on scroll. Words are kept atomic
  * (white-space: nowrap) so lines never break mid-word or with orphan punctuation.
  *
- * SSR-safe: produces the same DOM on server and client. The `.split` class is
- * added in JSX so CSS visibility:hidden is correctly toggled.
+ * Server rendering and initial hydration keep the text intact. After mounting,
+ * the animated characters are decorative and one intact copy remains available
+ * to assistive technology.
  */
 export function TextReveal({ children, className, as: Tag = 'span' }: TextRevealProps) {
   const text = typeof children === 'string' ? children : '';
+  const [enhanced, setEnhanced] = useState(false);
+
+  useEffect(() => {
+    setEnhanced(true);
+  }, []);
+
   const tokens = text.split(/(\s+)/);
 
   let charIndex = 0;
@@ -49,7 +56,12 @@ export function TextReveal({ children, className, as: Tag = 'span' }: TextReveal
 
   return (
     <Tag className={`split ${className ?? ''}`.trim()} data-text-reveal>
-      {nodes}
+      {enhanced ? (
+        <>
+          <span className="sr-only">{text}</span>
+          <span aria-hidden="true">{nodes}</span>
+        </>
+      ) : text}
     </Tag>
   );
 }

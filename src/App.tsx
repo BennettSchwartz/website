@@ -8,6 +8,10 @@ import { About } from './components/About';
 import { Interests } from './components/Interests';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
+import { DetailPage, NotFound } from './components/DetailPage';
+import { detailPages } from './content/pages';
+import { normalizePath } from './content/site';
+import { getMetaTags, updateMetaTags } from './utils/updateMetaTags';
 
 declare global {
   interface Window {
@@ -19,7 +23,10 @@ declare global {
   }
 }
 
-export default function App() {
+export default function App({ path = typeof window === 'undefined' ? '/' : window.location.pathname }: { path?: string }) {
+  const pathname = normalizePath(path);
+  const page = detailPages.find((item) => item.path === pathname);
+  useEffect(() => { updateMetaTags(getMetaTags(pathname)); }, [pathname]);
   // Master IntersectionObserver — adds .in-view to anything tagged
   // with data-reveal or [data-text-reveal] when it scrolls into view.
   useEffect(() => {
@@ -28,6 +35,7 @@ export default function App() {
       document.querySelectorAll('[data-reveal], [data-text-reveal]').forEach((el) => {
         el.classList.add('in-view');
       });
+      document.documentElement.classList.remove('no-js');
       return;
     }
 
@@ -45,13 +53,14 @@ export default function App() {
     document.querySelectorAll('[data-reveal], [data-text-reveal]').forEach((el) => {
       observer.observe(el);
     });
+    document.documentElement.classList.remove('no-js');
 
     return () => observer.disconnect();
   }, []);
 
   // Lenis smooth scroll + anchor link interception
   useEffect(() => {
-    if (typeof window === 'undefined' || !window.Lenis) return;
+    if (typeof window === 'undefined' || !window.Lenis || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     const lenis = new window.Lenis({
       duration: 1.15,
@@ -68,9 +77,10 @@ export default function App() {
     };
     rafId = requestAnimationFrame(raf);
 
-    const handleAnchorClick = (e: Event) => {
+    const handleAnchorClick = (e: MouseEvent) => {
+      if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
       const link = (e.target as HTMLElement).closest('a[href^="#"]') as HTMLAnchorElement | null;
-      if (!link) return;
+      if (!link || link.classList.contains('skip-link')) return;
       const href = link.getAttribute('href') ?? '';
       if (href === '#') {
         e.preventDefault();
@@ -85,35 +95,33 @@ export default function App() {
       }
     };
 
-    const handleBackTop = (e: Event) => {
-      const btn = (e.target as HTMLElement).closest('[data-back-top]');
-      if (!btn) return;
-      e.preventDefault();
-      lenis.scrollTo(0, { duration: 1.6 });
-    };
-
     document.addEventListener('click', handleAnchorClick);
-    document.addEventListener('click', handleBackTop);
 
     return () => {
       cancelAnimationFrame(rafId);
       document.removeEventListener('click', handleAnchorClick);
-      document.removeEventListener('click', handleBackTop);
       lenis.destroy();
     };
   }, []);
 
   return (
     <>
-      <AsciiGrid />
-      <Hero />
-      <Projects />
-      <TechStack />
-      <Experience />
-      <About />
-      <Interests />
-      <Contact />
-      <Footer />
+      <a className="skip-link" href="#main-content">Skip to content</a>
+      {pathname === '/' ? (
+        <>
+          <AsciiGrid />
+          <main id="main-content" tabIndex={-1}>
+            <Hero />
+            <Projects />
+            <TechStack />
+            <Experience />
+            <About />
+            <Interests />
+            <Contact />
+          </main>
+          <Footer />
+        </>
+      ) : page ? <DetailPage page={page} /> : <NotFound />}
     </>
   );
 }

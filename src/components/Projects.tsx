@@ -3,11 +3,12 @@ import { ArrowIcon } from './ArrowIcon';
 import { WordReveal } from './WordReveal';
 
 interface Project {
+  id?: string;
   num: string;
   title: string;
   description: string;
-  href: string;
-  linkLabel: string;
+  href?: string;
+  linkLabel?: string;
 }
 
 const projects: Project[] = [
@@ -20,17 +21,18 @@ const projects: Project[] = [
   },
   {
     num: '02',
-    title: 'Gain Laboratories',
-    description: 'Designing AR glasses and an always-on spatial computing platform, with work across optics, embedded systems, spatial sensing, and wearable hardware.',
-    href: 'https://gainlabs.us',
-    linkLabel: 'Visit gainlabs.us',
+    id: 'gusty-laboratories',
+    title: 'Gusty Laboratories',
+    description: 'Powered exoskeletons and personal flight systems, with the goal of extending human mobility on the ground and in the air.',
+    href: '/projects/gusty-laboratories',
+    linkLabel: 'Read about Gusty Laboratories',
   },
   {
     num: '03',
     title: 'Veridity',
-    description: 'A nonprofit developing AI-assisted fact-checking for live political streams, helping viewers assess claims as they are made.',
-    href: 'https://veridity.org',
-    linkLabel: 'veridity.org',
+    description: 'An open-source ontology platform designed to connect public information and help researchers trace relationships back to their sources.',
+    href: '/projects/veridity',
+    linkLabel: 'Read about Veridity',
   },
 ];
 
@@ -41,25 +43,34 @@ export function Projects() {
         <header className="section-header">
           <span className="kicker"><TextReveal>01 / Work</TextReveal></span>
           <TextReveal as="h2" className="section-title">Selected projects</TextReveal>
-          <p className="section-sub reveal-up delay-2" data-reveal>AR glasses, memory for AI agents, and live political fact-checking.</p>
+          <p className="section-sub reveal-up delay-2" data-reveal>Research and engineering across software and human mobility.</p>
         </header>
 
         <div className="work-list">
           {projects.map((p) => (
-            <article key={p.num} className="project" data-reveal>
+            <article key={p.num} id={p.id} className="project" data-reveal>
               <div className="project-num">{p.num}</div>
               <div className="project-body">
                 <header className="project-header">
                   <TextReveal as="h3" className="project-title">{p.title}</TextReveal>
                 </header>
                 <WordReveal className="project-desc">{p.description}</WordReveal>
-                <a className="project-link" href={p.href} target="_blank" rel="noopener noreferrer">
-                  {p.linkLabel} <ArrowIcon />
-                </a>
+                {p.href && p.linkLabel && (
+                  <a className="project-link" href={p.href}>
+                    {p.linkLabel} <ArrowIcon />
+                  </a>
+                )}
               </div>
             </article>
           ))}
         </div>
+        <aside className="work-recognition" aria-labelledby="recognition-heading">
+          <div>
+            <h3 id="recognition-heading">Competitions &amp; recognition</h3>
+            <p>Competition results and the projects behind them.</p>
+          </div>
+          <a className="text-link" href="/competitions">View competition results <ArrowIcon /></a>
+        </aside>
       </div>
     </section>
   );

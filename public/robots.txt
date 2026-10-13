@@ -2,6 +2,7 @@
 # Allow all search engines to crawl the website
 
 User-agent: *
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 Allow: /
 Crawl-delay: 0
 

@@ -8,23 +8,26 @@ const buildDir = path.join(projectRoot, "build");
 const templatePath = path.join(buildDir, "index.html");
 const serverDir = path.join(buildDir, "server");
 const serverEntryPath = await findServerEntry(serverDir);
-const { render } = await import(pathToFileURL(serverEntryPath).href);
+const { render, sitePaths, siteUrl, contentUpdated, detailPages } = await import(pathToFileURL(serverEntryPath).href);
 const template = await readFile(templatePath, "utf8");
 
-const routes = [
-  {
-    url: "/",
-    outputPath: templatePath,
-  },
-];
+const routes = [...sitePaths, '/404'].map((url) => ({
+  url,
+  outputPath: url === '/404' ? path.join(buildDir, '404.html') : path.join(buildDir, url === '/' ? 'index.html' : `${url.slice(1)}/index.html`),
+}));
 
 for (const route of routes) {
-  const { appHtml, metaTags } = render(route.url);
+  const { appHtml, metaTags, schema } = render(route.url);
   let html = injectAppHtml(template, appHtml);
   html = applyMetaTags(html, metaTags);
+  html = html.replace('<!-- PAGE_SCHEMA -->', `<script type="application/ld+json">${JSON.stringify(schema).replaceAll('<', '\\u003c')}</script>`);
+  if (route.url === '/404') html = replaceMetaTag(html, 'name', 'robots', 'noindex, follow');
   await mkdir(path.dirname(route.outputPath), { recursive: true });
   await writeFile(route.outputPath, html);
 }
+
+await writeFile(path.join(buildDir, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitePaths.map((url) => `  <url><loc>${siteUrl}${url}</loc><lastmod>${contentUpdated}</lastmod></url>`).join('\n')}\n</urlset>\n`);
+await writeFile(path.join(buildDir, 'llms.txt'), `# Bennett Schwartz\n\n> ${render('/').metaTags.description}\n\n## Pages\n\n- [Home](${siteUrl}/): Biography, current projects, and interests.\n${detailPages.map((page) => `- [${page.title}](${siteUrl}${page.path}): ${page.description}`).join('\n')}\n`);
 
 await rm(serverDir, { recursive: true, force: true });
 

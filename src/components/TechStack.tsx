@@ -16,7 +16,7 @@ export function TechStack() {
         <header className="section-header">
           <span className="kicker"><TextReveal>02 / Stack</TextReveal></span>
           <TextReveal as="h2" className="section-title">The stack</TextReveal>
-          <p className="section-sub reveal-up delay-2" data-reveal>Languages, frameworks, and infrastructure I keep coming back to.</p>
+          <p className="section-sub reveal-up delay-2" data-reveal>Languages, frameworks, and infrastructure behind the work.</p>
         </header>
 
         <div className="stack-grid">

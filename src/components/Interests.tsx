@@ -3,7 +3,7 @@ import { TextReveal } from './TextReveal';
 const interests = [
   { num: '01', title: 'Philosophy & Ethics', desc: 'Exploring the deeper questions of technology, society, and human nature.' },
   { num: '02', title: 'Science & Innovation', desc: 'Passionate about scientific discovery and technological advancement.' },
-  { num: '03', title: 'Civil Liberties', desc: 'Civil liberties maximalist.' },
+  { num: '03', title: 'Civil Liberties', desc: 'An independent interest in constitutional law, press freedom, and the limits of government power.' },
   { num: '04', title: 'Capitalism & Ethics', desc: 'Balancing free market principles with ethical business practices.' },
 ];
 
@@ -13,8 +13,8 @@ export function Interests() {
       <div className="scene-interests-inner">
         <header className="section-header">
           <span className="kicker"><TextReveal>05 / Interests</TextReveal></span>
-          <TextReveal as="h2" className="section-title">Things I think about</TextReveal>
-          <p className="section-sub reveal-up delay-2" data-reveal>What I&apos;m curious about beyond the keyboard.</p>
+          <TextReveal as="h2" className="section-title">Beyond the keyboard</TextReveal>
+          <p className="section-sub reveal-up delay-2" data-reveal>Interests that shape the work and everyday life.</p>
         </header>
 
         <div className="interests-grid">

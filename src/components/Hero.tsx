@@ -10,11 +10,11 @@ export function Hero() {
         <h1 className="name">Bennett<br />Schwartz</h1>
         <div className="alias">
           <span>aka GustyCube</span>
-          <span className="sep">·</span>
+          <span className="sep" aria-hidden="true">/</span>
           <span><span className="flag">🇺🇸</span> Based in United States</span>
         </div>
-        <p className="subtitle">Full Stack Software Developer, Researcher, and Entrepreneur</p>
-        <a className="cta" href="#contact">Get in touch <ArrowIcon /></a>
+        <p className="subtitle">Student, software developer, and founder</p>
+        <a className="cta" href="https://x.com/BennettSchwartz" target="_blank" rel="noopener noreferrer">Follow me on X <ArrowIcon /></a>
       </div>
 
       <div />

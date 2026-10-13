@@ -7,17 +7,17 @@ export function About() {
       <div className="scene-about-inner">
         <header className="section-header">
           <span className="kicker"><TextReveal>04 / About</TextReveal></span>
-          <TextReveal as="h2" className="section-title">Behind the work</TextReveal>
+          <TextReveal as="h2" className="section-title">About me</TextReveal>
           <p className="section-sub reveal-up delay-2" data-reveal>Who I am, and how I got here.</p>
         </header>
 
-        <TextReveal as="p" className="about-statement">Building things that sit at the intersection of technology and society.</TextReveal>
+        <TextReveal as="p" className="about-statement">I build things that sit at the intersection of technology and society.</TextReveal>
 
         <div className="about-body">
-          <WordReveal>I&apos;m a software developer, entrepreneur, and researcher based in the United States, focused on building infrastructure-level software, scalable systems, and thoughtful applications that sit at the intersection of technology and society. I discovered programming at 5 years old, and what started as curiosity has evolved into expertise spanning full-stack development, systems engineering, networking, and AI tooling.</WordReveal>
-          <WordReveal>I&apos;m currently leading Gain Laboratories, where we design AR glasses, and building Membrane, an open-source agent memory and learning substrate. I also founded Veridity, a nonprofit developing AI-assisted fact-checking for live political streams. My work is driven by an insatiable curiosity about how things work, from the smallest algorithms to the largest distributed systems.</WordReveal>
-          <WordReveal>Beyond coding, I&apos;m deeply fascinated by all kinds of sciences, from computer science and mathematics to physics, biology, and cognitive science. I&apos;m equally passionate about philosophy and ethics, exploring how technology intersects with human values and societal progress.</WordReveal>
-          <WordReveal>I believe in the power of democratic values and ethical approaches to technology development. My diverse interests fuel my approach to problem-solving, bringing interdisciplinary thinking to every project I tackle.</WordReveal>
+          <WordReveal>I'm a software developer, entrepreneur, and researcher, and a high honor roll sophomore at Morristown Beard School. I began programming at age five out of curiosity about how things work. That curiosity has stayed with me as I've explored full-stack development, systems engineering, networking, and AI tooling. I'm particularly interested in infrastructure software and scalable systems, from the algorithms behind them to the applications people use.</WordReveal>
+          <WordReveal>Computer science and mathematics are central interests, but I enjoy learning well beyond them. At school, I study Latin and participate in debate. Outside the classroom, I explore constitutional law and civil liberties, especially press freedom and the limits of government power.</WordReveal>
+          <WordReveal>I'm also drawn to physics, biology, and cognitive science, and to the questions philosophy and ethics raise about technology's place in society. Democratic values matter to me, and I care about how the tools we build affect people's freedom and ability to understand the world. Those questions are part of what keeps me interested in both research and building software.</WordReveal>
+          <WordReveal>Outside of that, I enjoy gaming, music, and reading. My reading ranges across subjects, with science fiction and fantasy alongside nonfiction about my interests. I like having room to follow a new question, pick up something unfamiliar, or simply get absorbed in a good story.</WordReveal>
         </div>
       </div>
     </section>
